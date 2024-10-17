@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding-top: 50px; /* Untuk menghindari konten yang terhalang oleh navbar */
+}
+
+/* Header Section */
+header {
+    background-color: #F5F5F0;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    position: fixed; /* Agar navbar tetap di atas saat scroll */
+    top: 0; /* Jarak dari bagian atas viewport */
+    left: 0; /* Jarak dari sisi kiri */
+    right: 0; /* Jarak dari sisi kanan */
+    background-color: #F5F5F0; /* Latar belakang navbar */
+    z-index: 1000; /* Pastikan navbar berada di atas elemen lain */
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex: 2;
+    justify-content: center; /* Posisikan menu di tengah */
+    gap: 30px;
+}
+
+.nav-menu li {
+    display: inline;
+}
+
+.nav-menu a {
+    color: #7D2235;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu a:hover {
+    color: #B25C6E;
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: flex-end; /* Menjaga elemen tetap di sebelah kanan */
+    align-items: center; /* Untuk menyelaraskan secara vertikal */
+}
+
+.nav-right a {
+    color: #7D2235;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-right a:hover {
+    color: #B25C6E;
+}
+
+/* Hamburger Menu Styles */
+.nav-toggle {
+    display: none; /* Tersembunyi secara default */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #7D2235;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Sembunyikan menu secara default di ponsel */
+        flex-direction: column; /* Ubah arah menjadi kolom */
+        position: absolute; /* Agar dapat diposisikan */
+        background-color: #F5F5F0; /* Latar belakang menu */
+        width: 100%; /* Lebar penuh */
+        top: 60px; /* Posisi di bawah navbar */
+        left: 0; /* Rata kiri */
+        z-index: 999; /* Pastikan menu berada di atas */
+    }
+
+    .nav-menu.active {
+        display: flex; /* Tampilkan menu saat aktif */
+    }
+
+    .nav-toggle {
+        display: flex; /* Tampilkan ikon hamburger di ponsel */
+    }
+}
+
+
+/* Content Section */
+.content-section {
+    display: flex;
+    justify-content: center;
+    background-color: #F5F5F0;
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dua kolom dengan lebar yang sama */
+    gap: 30px;
+    align-items: center;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.text-content {
+    grid-column: 1 / 2; /* Teks di sebelah kiri */
+    padding-right: 20px;
+}
+
+.text-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #7D2235;
+}
+
+.text-content p {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.text-content button {
+    background-color: transparent; /* Tidak ada latar belakang */
+    color: #7D2235; /* Warna teks (sesuai dengan warna border) */
+    padding: 10px 20px;
+    border: 2px solid #7D2235; /* Border sesuai dengan warna teks */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transisi halus */
+}
+
+.text-content button:hover {
+    background-color: #7D2235; /* Warna latar belakang saat di-hover */
+    color: white; /* Warna teks berubah menjadi putih saat di-hover */
+}
+
+.image-content {
+    grid-column: 2 / 3; /* Gambar di sebelah kanan */
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 900px) {
+    .content-container {
+        grid-template-columns: 1fr; /* Konten ditumpuk secara vertikal */
+    }
+
+    .image-content {
+        margin-top: 20px; /* Jarak atas untuk gambar */
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-menu a {
+        font-size: 14px;
+    }
+
+    .text-content h2 {
+        font-size: 1.5em;
+    }
+
+    /* Mengubah urutan elemen untuk tampilan kecil */
+    .content-container {
+        grid-template-areas:
+            "text"
+            "image";
+    }
+
+    .text-content {
+        grid-area: text; /* Menyusun teks di area teks */
+    }
+
+    .image-content {
+        grid-area: image; /* Menyusun gambar di area gambar */
+        margin-top: 20px; /* Tambahkan margin atas untuk pemisahan */
+    }
+}
+
+/* Footer General Styles */
+footer {
+    background-color: #f2e6d8;
+    padding: 20px;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.footer-column {
+    padding: 20px;
+    text-align: center;
+    width: 25%;
+    box-sizing: border-box;
+}
+
+/* Logo Styles */
+.logo-box {
+    background-color: #7f2b36;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.logo-text {
+    color: white;
+    font-size: 50px;
+    line-height: 100px;
+}
+
+.shop-name {
+    margin-top: 10px;
+    font-family: serif;
+    color: #7f2b36;
+}
+
+/* Menu Styles */
+.footer-title {
+    color: #7f2b36;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.footer-menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-menu li {
+    margin: 5px 0;
+}
+
+.footer-menu a {
+    color: #7f2b36;
+    text-decoration: none;
+}
+
+/* Address and Social Icons */
+.footer-address {
+    color: #7f2b36;
+    margin-bottom: 10px;
+}
+
+/* Social Icons Section (Without HTML Changes) */
+.footer-column .social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Untuk menempatkan "Follow" dan ikon di tengah */
+    gap: 10px;  /* Jarak antara ikon-ikon sosial media */
+}
+
+/* Styling Follow Text */
+.footer-column .social-icons::before {
+    content: "Follow";
+    margin-right: 10px;  /* Jarak antara teks "Follow" dan ikon */
+    color: #7f2b36;
+    font-size: 16px;  /* Atur ukuran teks "Follow" */
+    display: inline-block;
+    vertical-align: middle; /* Menyelaraskan teks dengan ikon */
+}
+
+
+/* Ikon Sosial Media */
+.social-icons a {
+    font-size: 24px;
+    color: #7f2b36;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #25D366;  /* Hover color untuk WhatsApp */
+}
+
+/* WhatsApp Icon */
+.social-icons .fa-whatsapp {
+    color: #25D366;  /* Warna hijau WhatsApp */
+}
+
+/* Instagram Icon */
+.social-icons .fa-instagram {
+    color: #E1306C;  /* Warna khas Instagram */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.9em;
+    color: #7f2b36;
+}
+
+.footer-bottom a {
+    color: #7f2b36;
+    text-decoration: none;
+}
+
+/* Responsive Footer for Mobile Screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .logo-box {
+        width: 80px;
+        height: 80px;
+    }
+
+    .logo-text {
+        font-size: 40px;
+    }
+
+    .shop-name {
+        font-size: 16px;
+    }
+
+    .footer-title {
+        font-size: 1.3em;
+    }
+
+    .footer-menu li {
+        font-size: 16px;
+    }
+
+    .footer-bottom p {
+        font-size: 14px;
+    }
+}

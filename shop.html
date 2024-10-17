@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shop All</title>
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+      <div class="navbar">
+          <div class="logo">
+              <img src="img/logo.jpg" alt="Logo"> <!-- Ganti dengan logo yang sesuai -->
+          </div>
+          <ul class="nav-menu" id="nav-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="nav-right">
+              <a href="#">Log In</a>
+              <div class="nav-toggle" id="nav-toggle">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+              </div>
+              <script>
+                document.getElementById('nav-toggle').addEventListener('click', function() {
+                    const navMenu = document.getElementById('nav-menu');
+                    navMenu.classList.toggle('active'); // Mengaktifkan atau menonaktifkan kelas 'active'
+                });
+            </script>
+            
+          </div>
+      </div>
+      <script src="chart.js"></script>
+  </header>
+
+    <!--PRODUK-->
+  <section>
+    <div class="product-container" id="product-container"></div>
+  </section>
+
+  <script>
+    // Data produk
+    const products = [
+        { name: "Red Rose Flower mix", originalPrice: "Rp40.000", discountPrice: "Rp35.000", image: "img/produk 1.jpeg" },
+        { name: "Pink Daisy Flower mix", originalPrice: "Rp40.000", discountPrice: "Rp35.000", image: "img/produk2.jpeg" },
+        { name: "Daisy Fluff Hydrangea Flower", originalPrice: "Rp35.000", discountPrice: "Rp30.000", image: "img/produk3.jpeg" },
+        { name: "Pink Spring Tulip", originalPrice: "Rp40.000", discountPrice: "Rp35.000", image: "img/produk4.jpg" },
+        { name: "Purple Spring tulip mix", originalPrice: "Rp40.000", discountPrice: "Rp35.000", image: "img/produk5.jpg" },
+        { name: "Pink Rose", originalPrice: "Rp35.000", discountPrice: "Rp30.000", image: "img/produk6.jpg" },
+    ];
+
+    const productContainer = document.getElementById('product-container');
+
+    // Fungsi membuat produk
+    function createProductCard(product, index) {
+        return `
+            <div class="product-card">
+                <div class="discount-label">VDAY 10% Off</div>
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-details">
+                    <p>${product.name}</p>
+                    <p class="price"><span class="original-price">${product.originalPrice}</span> ${product.discountPrice}</p>
+                    
+                    <label for="quantity-${index}">Quantity</label>
+                    <input type="number" id="quantity-${index}" class="quantity" value="1" min="1" />
+                    
+                    <button class="buy-now" data-index="${index}">Buy Now</button>
+                </div>
+            </div>
+        `;
+    }
+
+    // Menambahkan semua produk ke kontainer
+    products.forEach((product, index) => {
+        productContainer.innerHTML += createProductCard(product, index);
+    });
+
+    // Fungsi untuk mengirim pesan ke WhatsApp
+    function sendToWhatsApp(productName, quantity, price) {
+        const whatsappMessage = `Halo, saya ingin memesan:\n \nNama: \nProduk: ${productName}\nKuantitas: ${quantity}\nHarga Total: Rp${price}`;
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=6288983126454&text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Tambahkan event listener ke semua tombol "Buy Now"
+    document.querySelectorAll('.buy-now').forEach(button => {
+        button.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            const product = products[index];
+            const quantity = document.getElementById(`quantity-${index}`).value;
+            const totalPrice = parseInt(product.discountPrice.replace('Rp', '').replace('.', '')) * quantity;
+            
+            // Kirim pesan ke WhatsApp dengan produk dan kuantitas yang dipilih
+            sendToWhatsApp(product.name, quantity, totalPrice.toLocaleString('id-ID'));
+        });
+    });
+</script>
+
+  <script src="chart.js"></script>
+
+  
+  <footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <div class="logo-box">
+                <div class="logo-text">FA</div>
+            </div>
+            <div class="shop-name">Flower Shop</div> 
+        </div>
+        <div class="footer-column">
+            <h2 class="footer-title">Quick Menu</h2>
+            <ul class="footer-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h2 class="footer-title">Policy</h2>
+            <ul class="footer-menu">
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Store Policy</a></li>
+                <li><a href="#">Payment Methods</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h2 class="footer-title">Address</h2>
+            <p class="footer-address">
+              Sucen Triharjo Sleman Sleman Yogyakarta,<br> Sleman, Kab Sleman DI Yogyakarta, 55514
+            </p>
+      
+            <div class="social-icons">
+                <a href="https://www.whatsapp.com/"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/tasyaastri_"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2035 by COTTON. Powered and secured by <a href="#">Wix</a></p>
+    </div>
+</footer>
+    
+</body>
+</html>

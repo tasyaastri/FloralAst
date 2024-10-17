@@ -1,0 +1,592 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding-top: 40px; /* Untuk menghindari konten yang terhalang oleh navbar */
+}
+
+
+/* Header Section */
+header {
+    background-color: #F5F5F0;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    position: fixed; /* Agar navbar tetap di atas saat scroll */
+    top: 0; /* Jarak dari bagian atas viewport */
+    left: 0; /* Jarak dari sisi kiri */
+    right: 0; /* Jarak dari sisi kanan */
+    background-color: #F5F5F0; /* Latar belakang navbar */
+    z-index: 1000; /* Pastikan navbar berada di atas elemen lain */
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex: 2;
+    justify-content: center; /* Posisikan menu di tengah */
+    gap: 30px;
+}
+
+.nav-menu li {
+    display: inline;
+}
+
+.nav-menu a {
+    color: #7D2235;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu a:hover {
+    color: #B25C6E;
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: flex-end; /* Menjaga elemen tetap di sebelah kanan */
+    align-items: center; /* Untuk menyelaraskan secara vertikal */
+}
+
+.nav-right a {
+    color: #7D2235;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-right a:hover {
+    color: #B25C6E;
+}
+
+/* Hamburger Menu Styles */
+.nav-toggle {
+    display: none; /* Tersembunyi secara default */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #7D2235;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Sembunyikan menu secara default di ponsel */
+        flex-direction: column; /* Ubah arah menjadi kolom */
+        position: absolute; /* Agar dapat diposisikan */
+        background-color: #F5F5F0; /* Latar belakang menu */
+        width: 100%; /* Lebar penuh */
+        top: 60px; /* Posisi di bawah navbar */
+        left: 0; /* Rata kiri */
+        z-index: 999; /* Pastikan menu berada di atas */
+    }
+
+    .nav-menu.active {
+        display: flex; /* Tampilkan menu saat aktif */
+    }
+
+    .nav-toggle {
+        display: flex; /* Tampilkan ikon hamburger di ponsel */
+    }
+}
+
+
+/* Hero Section */
+.hero-section {
+    background-image: url('img/fresh.jpg'); /* Ganti dengan gambar yang kamu inginkan */
+    background-size: cover;
+    background-attachment: fixed; /* Membuat latar belakang tetap diam */
+    background-position: center top; /* Mengatur posisi gambar ke tengah atas */
+    height: 700px; /* Tinggi diperbesar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1; /* Memastikan overlay tetap di atas gambar */
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2; 
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    font-family: 'Times New Roman', serif;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-family: 'Arial', sans-serif;
+}
+
+.fresh-section {
+    background-color: #f7f4f0; /* Light background color */
+    text-align: center;
+    padding: 80px 20px;
+    position: relative; /* Menambahkan posisi relatif */
+    z-index: 1; /* Memastikan bagian ini tetap di atas */
+    transform: translateY(100%); /* Mengatur agar bagian ini di luar pandangan awal */
+    transition: transform 0.5s ease-out; /* Efek transisi saat muncul */
+    margin-bottom: -20px; /* Menghilangkan jarak antara bagian ini dan produk */
+}
+
+.fresh-section.visible {
+    transform: translateY(0); /* Ketika ditambahkan kelas 'visible', bagian ini muncul */
+}
+
+/* Tambahan untuk menghapus transisi yang tidak diinginkan */
+.fresh-section, .fresh-section h1, .fresh-section p {
+    transition: none !important; /* Menghilangkan semua transisi */
+}
+
+
+
+/* Styling for the heading text (Fresh, Seasonal, Beautiful) */
+.fresh-section h1 {
+    font-family: 'Georgia', serif; /* Serupa dengan font pada gambar */
+    font-size: 48px; /* Menyesuaikan ukuran teks */
+    font-weight: 400; /* Normal weight */
+    color: #662533; /* Warna burgundy yang sesuai dengan gambar */
+    margin-bottom: 20px; /* Spasi di bawah heading */
+}
+
+/* Styling for the subtext (Order Now and Get Same-Day-Delivery) */
+.fresh-section p {
+    font-family: 'Georgia', serif; /* Sama dengan heading untuk konsistensi */
+    font-size: 18px; /* Ukuran lebih kecil untuk teks deskripsi */
+    color: #333333; /* Warna abu-abu gelap untuk teks deskripsi */
+    margin-top: 10px; /* Spasi di atas teks */
+}
+
+
+
+/* Produk Section */
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #f7f4f0;
+    padding: 20px;
+    height: 600px;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+
+.discount-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #6e3a3a;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.product-card img {
+    width: 100%;
+    height: 80%; /* Mengatur tinggi gambar sebagai persentase dari kartu produk */
+    object-fit: cover; /* Memastikan gambar memenuhi ruang dengan proporsi yang baik */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.product-details {
+    padding: 20px;
+}
+
+.product-details p {
+    margin: 5px 0;
+}
+
+.price {
+    font-size: 1.2em;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #b0b0b0;
+    margin-right: 10px;
+}
+
+
+
+/* Button Shop All */
+.product-container {
+    display: flex;
+    justify-content: center; /* Align items horizontally to the center */
+    gap: 20px;
+    background-color: #f7f4f0;
+    padding: 20px; /* Padding untuk kolom produk */
+    height: 600px; 
+    margin-bottom: 0; /* Pastikan tidak ada margin bawah */
+}
+
+.button-container {
+    display: flex; /* Menggunakan flexbox */
+    justify-content: center; /* Mengatur isi menjadi di tengah secara horizontal */
+    margin: 0; /* Pastikan tidak ada margin yang menyebabkan jarak */
+    padding: 20px 0; /* Padding vertikal untuk memberikan ruang di atas dan bawah tombol */
+    background-color: #F5F5F0; /* Menggunakan warna latar belakang yang sama dengan header */
+}
+
+.shop-button {
+    padding: 15px 30px; /* Padding untuk tombol */
+    font-size: 18px; /* Ukuran font */
+    border: 1px solid #7D2235; /* Warna border tombol */
+    background-color: transparent; /* Warna latar belakang transparan */
+    color: #7D2235; /* Warna teks tombol */
+    cursor: pointer; /* Ubah kursor saat hover */
+    font-family: 'Arial', sans-serif; /* Jenis font */
+    transition: background-color 0.3s, color 0.3s; /* Transisi untuk hover */
+}
+
+.shop-button:hover {
+    background-color: #7D2235; /* Efek hover */
+    color: white;
+}
+
+.shop-button:active, 
+.shop-button.active {
+    background-color: #7D2235; /* Warna merah maroon saat tombol diklik */
+    color: white; /* Ubah warna teks menjadi putih */
+    border: none; /* Menghilangkan border saat aktif */
+    outline: none; /* Menghilangkan outline pada saat aktif */
+    transform: scale(1); /* Pastikan tidak ada transformasi ukuran */
+}
+
+
+/* Bagian Galeri */
+.fresh-section h2 {
+    text-align: center; /* Memusatkan teks */
+    font-size: 2em; /* Ukuran font yang lebih besar */
+    margin-bottom: 20px; /* Jarak bawah */
+    color: #7D2235; /* Warna teks */
+}
+
+.gallery {
+    display: grid; /* Menggunakan CSS Grid untuk tata letak */
+    grid-template-columns: repeat(4, 1fr); /* Membuat 4 kolom dengan lebar yang sama */
+    gap: 10px; /* Jarak antar item galeri */
+    justify-items: center; /* Memusatkan item galeri */
+}
+
+/* Kolom tunggal saat responsif */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr; /* Mengubah menjadi 1 kolom saat layar kecil */
+    }
+
+}
+
+.gallery-item {
+    width: 100%; /* Membuat setiap item galeri mengisi kolom grid */
+    height: 500px; /* Tinggi item galeri */
+    overflow: hidden; /* Menyembunyikan bagian gambar yang melebihi batas */
+    position: relative; /* Diperlukan untuk efek overlay */
+}
+
+.gallery-item img {
+    width: 100%; /* Memastikan gambar mengisi seluruh lebar kontainer */
+    height: 100%; /* Memastikan gambar mengisi seluruh tinggi kontainer */
+    object-fit: cover; /* Menjaga proporsi gambar dengan memotong bagian yang tidak muat */
+    transition: transform 0.3s, filter 0.3s; /* Menambahkan transisi filter untuk efek hover */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Zoom sedikit saat hover */
+    filter: brightness(0.7); /* Sedikit menggelapkan gambar saat hover */
+}
+
+/* Overlay teks tanpa kotak latar belakang */
+.overlay-text {
+    position: absolute;
+    top: 50%; /* Posisikan di tengah secara vertikal */
+    left: 50%; /* Posisikan di tengah secara horizontal */
+    transform: translate(-50%, -50%); /* Pastikan teks benar-benar di tengah */
+    color: white; /* Warna teks putih */
+    font-size: 1.2em; /* Ukuran font teks */
+    text-align: center; /* Memusatkan teks */
+    opacity: 0; /* Sembunyikan teks awalnya */
+    transition: opacity 0.3s ease; /* Transisi untuk menampilkan teks */
+}
+
+.gallery-item:hover .overlay-text {
+    opacity: 1; /* Tampilkan teks saat kursor berada di atas gambar */
+}
+
+/* Modal */
+.modal {
+    display: none; /* Sembunyikan modal secara default */
+    position: fixed;
+    z-index: 1000; /* Letakkan modal di atas elemen lainnya */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Latar belakang modal dengan warna hitam transparan */
+}
+
+.modal-content {
+    margin: auto; /* Otomatis memusatkan konten modal */
+    display: block; 
+    max-width: 80%; /* Batas lebar maksimal konten modal */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+
+
+
+/*follow us*/
+.button {
+    padding: 15px 30px; /* Padding untuk tombol */
+    font-size: 18px; /* Ukuran font */
+    border: 1px solid #7D2235; /* Warna border tombol */
+    background-color: transparent; /* Warna latar belakang transparan */
+    color: #7D2235; /* Warna teks tombol */
+    cursor: pointer; /* Ubah kursor saat hover */
+    font-family: 'Arial', sans-serif; /* Jenis font */
+    transition: background-color 0.3s, color 0.3s; /* Transisi untuk hover */
+}
+
+.button:hover {
+    background-color: #7D2235; /* Efek hover */
+    color: white;
+}
+
+.follow-us-container {
+    display: flex; /* Menggunakan flexbox untuk penataan */
+    justify-content: center; /* Memusatkan tombol di tengah */
+    margin-top: 20px; /* Jarak atas dari galeri */
+}
+
+
+
+/* Footer General Styles */
+footer {
+    background-color: #f2e6d8;
+    padding: 20px;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.footer-column {
+    padding: 20px;
+    text-align: center;
+    width: 25%;
+    box-sizing: border-box;
+}
+
+/* Logo Styles */
+.logo-box {
+    background-color: #7f2b36;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.logo-text {
+    color: white;
+    font-size: 50px;
+    line-height: 100px;
+}
+
+.shop-name {
+    margin-top: 10px;
+    font-family: serif;
+    color: #7f2b36;
+}
+
+/* Menu Styles */
+.footer-title {
+    color: #7f2b36;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.footer-menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-menu li {
+    margin: 5px 0;
+}
+
+.footer-menu a {
+    color: #7f2b36;
+    text-decoration: none;
+}
+
+/* Address and Social Icons */
+.footer-address {
+    color: #7f2b36;
+    margin-bottom: 10px;
+}
+
+/* Social Icons Section (Without HTML Changes) */
+.footer-column .social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Untuk menempatkan "Follow" dan ikon di tengah */
+    gap: 10px;  /* Jarak antara ikon-ikon sosial media */
+}
+
+/* Styling Follow Text */
+.footer-column .social-icons::before {
+    content: "Follow";
+    margin-right: 10px;  /* Jarak antara teks "Follow" dan ikon */
+    color: #7f2b36;
+    font-size: 16px;  /* Atur ukuran teks "Follow" */
+    display: inline-block;
+    vertical-align: middle; /* Menyelaraskan teks dengan ikon */
+}
+
+
+/* Ikon Sosial Media */
+.social-icons a {
+    font-size: 24px;
+    color: #7f2b36;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #25D366;  /* Hover color untuk WhatsApp */
+}
+
+/* WhatsApp Icon */
+.social-icons .fa-whatsapp {
+    color: #25D366;  /* Warna hijau WhatsApp */
+}
+
+/* Instagram Icon */
+.social-icons .fa-instagram {
+    color: #E1306C;  /* Warna khas Instagram */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.9em;
+    color: #7f2b36;
+}
+
+.footer-bottom a {
+    color: #7f2b36;
+    text-decoration: none;
+}
+
+/* Responsive Footer for Mobile Screens */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .logo-box {
+        width: 80px;
+        height: 80px;
+    }
+
+    .logo-text {
+        font-size: 40px;
+    }
+
+    .shop-name {
+        font-size: 16px;
+    }
+
+    .footer-title {
+        font-size: 1.3em;
+    }
+
+    .footer-menu li {
+        font-size: 16px;
+    }
+
+    .footer-bottom p {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotton Flower Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="img/logo.jpg" alt="Logo"> <!-- Ganti dengan logo yang sesuai -->
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#">Log In</a>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+        <script src="chart.js"></script>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>FloralAst</h1>
+            <p>FLOWER SHOP</p>
+        </div>
+    </section>
+
+    <!-- Fresh, Seasonal Section -->
+    <section class="fresh-section">
+        <div class="fresh-content">
+            <h1>Buds, Blooms, Bliss</h1>
+            <p>Order Now and Get Same-Day-Delivery</p>
+        </div>
+    </section>
+
+    <!--produk-->
+    <section>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="discount-label">VDAY 10% Off</div>
+                <img src="img/produk 1.jpeg " alt="Flower Product 1">
+                <div class="product-details">
+                    <p>Red Rose Flower mix</p>
+                    <p class="price"><span class="original-price">Rp40.000</span> Rp35.000</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="discount-label">VDAY 10% Off</div>
+                <img src="img/produk2.jpeg" alt="Flower Product 2">
+                <div class="product-details">
+                    <p>Pink Daisy Flower mix</p>
+                    <p class="price"><span class="original-price">Rp40.000</span> Rp35.000</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="discount-label">VDAY 10% Off</div>
+                <img src="img/produk3.jpeg" alt="Flower Product 3">
+                <div class="product-details">
+                    <p>Daisy Fluff Hydrangea Flower</p>
+                    <p class="price"><span class="original-price">Rp35.000</span> Rp30.000</p>
+                </div>
+            </div>
+        </div>
+        <!-- Tombol Shop All -->
+        <div class="button-container">
+            <a href="shop.html"><button class="pt-24 shop-button">Shop All</button></a>
+        </div>
+    </section>
+    
+    
+    <script src="script.js"></script>
+
+   <!-- Empat Foto -->
+   <div class="fresh-section visible">
+    <h2>FloralAst Shop</h2>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="img/produk 1.jpeg" alt="Deskripsi gambar 1">
+            <div class="overlay-text">@ugen jakal, #bunganya cantik, rapi, pokoknya suka deh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/produk2.jpeg" alt="Deskripsi gambar 2">
+            <div class="overlay-text">@sintio tugu, #aaaaaaaaaaaa lucuuuuk bingittt, mw lagi</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/produk3.jpeg" alt="Deskripsi gambar 3">
+            <div class="overlay-text">@ketunn, #bunganya bagus</div>
+        </div>
+        <div class="gallery-item">
+            <img src="img/b1.jpeg" alt="Deskripsi gambar 4">
+            <div class="overlay-text">@yang manggil nanas, #bunganya cantik, rapi</div>
+        </div>
+    </div>
+</div>
+    
+    <!-- Modal for images -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div id="caption"></div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+    
+   <!-- Tombol Follow Us -->
+    <div class="button-container">
+        <a href="https://www.instagram.com/tasyaastri_" ><button class="shop-button">Follow Us</button></a>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="logo-box">
+                    <div class="logo-text">FA</div>
+                </div>
+                <div class="shop-name">Flower Shop</div>
+            </div>
+            <div class="footer-column">
+                <h2 class="footer-title">Quick Menu</h2>
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h2 class="footer-title">Policy</h2>
+                <ul class="footer-menu">
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Store Policy</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h2 class="footer-title">Address</h2>
+                <p class="footer-address">
+                    Sucen Triharjo Sleman Sleman Yogyakarta,<br> Sleman, Kab Sleman DI Yogyakarta, 55514
+                </p>
+          
+                <div class="social-icons">
+                    <a href="https://wa.me/6288963126454"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/tasyaastri_"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2035 by COTTON. Powered and secured by <a href="#">Wix</a></p>
+        </div>
+    </footer>
+    
+</body>
+</html>

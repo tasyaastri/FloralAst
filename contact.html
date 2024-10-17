@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+      <div class="navbar">
+          <div class="logo">
+              <img src="img/logo.jpg" alt="Logo"> <!-- Ganti dengan logo yang sesuai -->
+          </div>
+          <ul class="nav-menu" id="nav-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="nav-right">
+              <a href="#">Log In</a>
+              <div class="nav-toggle" id="nav-toggle">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+              </div>
+          </div>
+      </div>
+      <script src="chart.js"></script>
+  </header>
+
+    <div class="form-container">
+        <h2>We're Here for Any Question</h2>
+        <form id="contact-form" action="#" method="POST"> <!-- Tambahkan ID contact-form -->
+            <div class="row">
+                <div>
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name">
+                </div>
+                <div>
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name">
+                </div>
+            </div>
+    
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="subject">Phone</label>
+            <input type="text" id="subject" name="subject">
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!--menyambung wa-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mengambil elemen form dengan ID 'contact-form'
+            var form = document.getElementById('contact-form');
+            
+            // Mengecek apakah elemen form ditemukan
+            if (form) {
+                console.log("Form ditemukan, menunggu submit...");
+                // Menambahkan event listener pada submit form
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+        
+                    // Mengambil nilai dari form dengan pengecekan ID
+                    var firstName = document.getElementById('first-name');
+                    var lastName = document.getElementById('last-name');
+                    var email = document.getElementById('email');
+                    var subject = document.getElementById('subject');
+                    var message = document.getElementById('message');
+        
+                    // Pengecekan apakah semua elemen form ditemukan
+                    if (firstName && lastName && email && subject && message) {
+                        console.log("Semua elemen ditemukan, menyiapkan pesan...");
+                        var firstNameValue = firstName.value;
+                        var lastNameValue = lastName.value;
+                        var emailValue = email.value;
+                        var subjectValue = subject.value;
+                        var messageValue = message.value;
+        
+                        // Format pesan WhatsApp
+                        var whatsappMessage = `Halo, saya ingin melakukan pemesanan:\n\nNama: ${firstNameValue}\nAlamat: ${lastNameValue}\nEmail: ${emailValue}\nTelepon: ${subjectValue}\nCatatan Khusus: ${messageValue}`;
+        
+                        // Encode URL untuk menghindari masalah dengan karakter khusus
+                        var whatsappUrl = `https://api.whatsapp.com/send?phone=6288983126454&text=${encodeURIComponent(whatsappMessage)}`;
+                        
+                        console.log("Mengirim ke WhatsApp: " + whatsappUrl);
+        
+                        // Redirect ke WhatsApp
+                        window.location.href = whatsappUrl;
+                        // Reset form setelah pengiriman
+                        form.reset();
+                    } else {
+                        console.error("Salah satu elemen form tidak ditemukan");
+                    }
+                });
+            } else {
+                console.error("Form element not found");
+            }
+        });
+    </script>
+    
+    
+    
+    <footer>
+      <div class="footer-container">
+          <div class="footer-column">
+              <div class="logo-box">
+                  <div class="logo-text">FA</div>
+              </div>
+              <div class="shop-name">Flower Shop</div>
+          </div>
+          <div class="footer-column">
+              <h2 class="footer-title">Quick Menu</h2>
+              <ul class="footer-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h2 class="footer-title">Policy</h2>
+              <ul class="footer-menu">
+                  <li><a href="#">Shipping & Returns</a></li>
+                  <li><a href="#">Store Policy</a></li>
+                  <li><a href="#">Payment Methods</a></li>
+                  <li><a href="#">FAQ</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h2 class="footer-title">Address</h2>
+              <p class="footer-address">
+                Sucen Triharjo Sleman Sleman Yogyakarta,<br> Sleman, Kab Sleman DI Yogyakarta, 55514
+              </p>
+        
+              <div class="social-icons">
+                  <a href="https://www.whatsapp.com/"><i class="fab fa-whatsapp"></i></a>
+                  <a href="https://www.instagram.com/tasyaastri_"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2035 by COTTON. Powered and secured by <a href="#">Wix</a></p>
+      </div>
+  </footer>
+</body>
+</html>
